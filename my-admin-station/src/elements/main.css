@@ -112,13 +112,18 @@ tfoot tr td {
     cursor: pointer;
 }
 
+.btn-icon {
+    padding: 2px 0 0 2.7px;
+}
+
+.play-btn {
+    background-color: rgb(32, 149, 8);
+    border: 2px solid rgb(0, 87, 14);
+}
+
 .info-btn {
     background-color: rgb(8, 95, 149);
     border: 2px solid rgb(0, 54, 87);
-}
-
-.btn-icon {
-    padding: 2px 0 0 2.7px;
 }
 
 .delete-btn {

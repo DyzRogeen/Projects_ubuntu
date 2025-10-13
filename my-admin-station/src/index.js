@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Network from './elements/network';
 import Stats from './elements/stats';
 import System from './elements/system';
 import Navbar from './elements/layout/navbar';
@@ -18,6 +19,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/system" element={<System />} />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/network" element={<Network />} />
       </Routes>
       <Footer />
     </Router>

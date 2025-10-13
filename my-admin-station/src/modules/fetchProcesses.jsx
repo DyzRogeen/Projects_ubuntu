@@ -9,6 +9,7 @@ function useFetchProcesses(url, interval = 7000) {
         const fetchData = () => {
             axios.get(url)
             .then((res) => (setProcesses(res.data)))
+            .catch((e) => console.error(e));
         }
 
         fetchData();

@@ -36,7 +36,7 @@ namespace MyAdminStation.Controllers
                     .OrderBy(b => b.record_time)
                     .ToListAsync();
 
-                return Ok(new {infos, battery_stats});
+                return Ok(new { infos, battery_stats });
             }
             catch (Exception e)
             {
@@ -98,6 +98,48 @@ namespace MyAdminStation.Controllers
             try
             {
                 await _httpClient.DeleteFromJsonAsync<object>(String.Format("{0}/processes/delete/{1}", URL_AGENT, pid));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { error = e.Message });
+            }
+        }
+
+        [HttpGet("network")]
+        public async Task<IActionResult> CollectPackets()
+        {
+            try
+            {
+                var packets = await _httpClient.GetFromJsonAsync<object>(String.Format("{0}/network", URL_AGENT));
+                return Ok(packets);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { error = e.Message });
+            }
+        }
+
+        [HttpGet("network/stop")]
+        public async Task<IActionResult> StopSniffing()
+        {
+            try
+            {
+                await _httpClient.GetFromJsonAsync<object>(String.Format("{0}/network/stop", URL_AGENT));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { error = e.Message });
+            }
+        }
+        
+        [HttpDelete("network/clear")]
+        public async Task<IActionResult> ClearPackets()
+        {
+            try
+            {
+                await _httpClient.DeleteAsync(String.Format("{0}/network", URL_AGENT));
                 return Ok();
             }
             catch (Exception e)

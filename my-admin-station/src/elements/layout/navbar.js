@@ -9,6 +9,7 @@ function Navbar() {
                 <h3 className="menu-elem"><Link to="/">Home</Link></h3>
                 <h3 className="menu-elem"><Link to="/system">System</Link></h3>
                 <h3 className="menu-elem"><Link to="/stats">Statistics</Link></h3>
+                <h3 className="menu-elem"><Link to="/network">Network</Link></h3>
             </div>
         </div>
     )
