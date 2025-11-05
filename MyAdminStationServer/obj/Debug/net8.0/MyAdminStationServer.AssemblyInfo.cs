@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyAdminStationServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75c49e01152677eb7b3282a3e09728445f531092")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5698320c1d5033d068a50a5c3eb2c2dfd2862d5")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyAdminStationServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyAdminStationServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

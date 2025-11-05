@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mon-service-clusterip
+  namespace: mon-namespace
+  labels:
+    foo: service-label
+  annotations:
+    bar: service-annotation
+spec:
+  type: ClusterIP
+  selector:
+    baz: pod-label
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80

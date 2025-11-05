@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-date
+  namespace: mon-namespace
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      parallelism: 2
+      completions: 2
+      activeDeadlineSeconds: 10
+      backoffLimit: 1
+      template:
+        metadata:
+          labels:
+            app: echo-date
+        spec:
+          containers:
+            - name: echo-container
+              image: cgr.dev/chainguard/busybox:latest
+              command: ["date"]
+              resources:
+                limits:
+                  memory: "50Mi"
+                requests:
+                  memory: "50Mi"
+                  cpu: "250m"
+              securityContext:
+                allowPrivilegeEscalation: false
+                privileged: false
+                runAsUser: 1001
+                runAsGroup: 1001
+                runAsNonRoot: true
+          restartPolicy: Never
+          securityContext:
+            seccompProfile:
+              type: RuntimeDefault
