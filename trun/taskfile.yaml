@@ -1,0 +1,36 @@
+---
+vars:
+  REPOSITORY: "."
+tasks:
+  - name: "make-directory"
+    desc: "Tache simple pour tester"
+    steps:
+      - cmd: "mkdir {{REPOSITORY}}/test"
+        com: "Création d'un répertoire"
+      - cmd: "sleep 1"
+      - cmd: "curl https://google.com > {{REPOSITORY}}/test/file.txt"
+        com: "On écrit dans un fichier"
+        silent: false
+      - call: "remove-directory"
+        com: "on nettoie tout ca"
+        silent: true
+    onFail:
+      - com: "ok ca a foiré"
+        cmd: "cat {{REPOSITORY}}/ok"
+  - name: "remove-directory"
+    steps:
+      - cmd: "rm -rf {{REPOSITORY}}/test"
+        com: "Allez hop, ca dégage !"
+  - name: "struct-up"
+    desc: "mets à jour les fichiers de struct"
+    steps:
+      - com: "sudo cp ./taskfile/taskfile.go /usr/local/go/src/taskfile"
+      - com: "sudo cp ./taskfile/task.go /usr/local/go/src/taskfile"
+  - name: "trun-up"
+    steps:
+      - call: "struct-up"
+        com: "update strucs"
+      - cmd: "go build -o trun"
+        com: "Building binary"
+      - cmd: "go install ."
+        com: "Installing binary in go directory"

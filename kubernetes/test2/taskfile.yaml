@@ -1,0 +1,19 @@
+---
+tasks:
+  - name: "setup-srv"
+    steps:
+      - com: "Setting up namespace"
+        cmd: "kubectl apply -f Namespace.yaml"
+      - com: "Setting namespace as default"
+        cmd: "kubens mon-namespace"
+      - com: "Starting pod"
+        cmd: "kubectl apply -f Pod.yaml"
+      - com: "Starting services"
+        cmd: "kubectl apply -f Service-loadBalancer.yaml"
+      - cmd: "kubectl apply -f Service-nodePort.yaml"
+      - com: "Services status"
+        cmd: "kubectl get svc"
+  - name: "down-srv"
+    steps:
+      - com: "Suppressing namespace"
+        cmd: "kubectl delete namespace mon-namespace"

@@ -8,12 +8,12 @@ spec:
     - name: nginx
       image: cgr.dev/chainguard/nginx:latest
       ports:
-        - containerPort: 8080
+        - containerPort: 8082
           protocol: TCP
       readinessProbe:
         httpGet:
           path: /
-          port: 8080
+          port: 8082
       resources:
         limits:
           memory: "50Mi"
